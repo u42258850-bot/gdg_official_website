@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;
+
+  --color-google-blue: #4285F4;
+  --color-google-red: #EA4335;
+  --color-google-yellow: #FBBC05;
+  --color-google-green: #34A853;
+  
+  --color-background: #FFFFFF;
+  --color-dark-background: #0F0F0F;
+  --color-dark-card: #1A1A1A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto; /* Lenis handles smooth scroll */
+  }
+  
+  body {
+    @apply font-body bg-background text-gray-900 transition-colors duration-300 antialiased;
+    overflow-x: hidden;
+  }
+
+  .dark body {
+    @apply bg-dark-background text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display uppercase tracking-tight;
+  }
+}
+
+/* Lenis Smooth Scroll Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+@layer components {
+  .glass-nav {
+    @apply sticky top-0 z-50 backdrop-blur-md border-b-2 border-black/5 bg-white/80 transition-all duration-500;
+  }
+
+  .dark .glass-nav {
+    @apply border-white/10 bg-dark-background/80;
+  }
+
+  .brutal-card {
+    @apply bg-white dark:bg-dark-card border-2 border-black dark:border-white/20 rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] transition-all duration-500 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,0.15)];
+  }
+
+  .btn-brutal {
+    @apply px-8 py-4 rounded-full font-display text-xl border-2 border-black dark:border-white bg-white dark:bg-transparent text-black dark:text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] transition-all duration-300 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  .btn-brutal-primary {
+    @apply px-8 py-4 rounded-full font-display text-xl border-2 border-black dark:border-white bg-google-blue text-white shadow-[4px_4px_0px_0px_rgba(66,133,244,0.4)] transition-all duration-300 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(66,133,244,0.6)] active:scale-95 flex items-center justify-center gap-2;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.grid-pattern {
+  background-image: radial-gradient(circle, #00000015 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.dark .grid-pattern {
+  background-image: radial-gradient(circle, #ffffff10 1px, transparent 1px);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px black;
+  color: transparent;
+}
+
+.dark .text-outline {
+  -webkit-text-stroke: 1px white;
+}
+
+.gdg-gradient-bar {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-google-blue) 0%,
+    var(--color-google-red) 33%,
+    var(--color-google-yellow) 66%,
+    var(--color-google-green) 100%
+  );
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 9999px;
+  border: none;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: transparent;
+}
